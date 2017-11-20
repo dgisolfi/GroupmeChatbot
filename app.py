@@ -58,7 +58,7 @@ def methodController(data):
       rules()
     elif "echo" in words: 
       echo(data)
-    else
+    else:
       converse(data)
     # elif "derivative" in words:
     #   x = int(re.search(r'\d+', text).group())  
