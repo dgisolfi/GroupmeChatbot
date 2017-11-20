@@ -1,0 +1,5 @@
+Flask==0.12
+gunicorn==19.6.0
+chatterbot==0.6.0
+chatterbot-corpus>=0.0.1,<1.0.0
+nltk>=3.2.0,<4.0.0
