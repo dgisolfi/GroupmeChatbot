@@ -1,10 +1,11 @@
 #Author: Daniel Gisolfi
-#Date: 8/4/17
+#Date: 1/2/18
 #GroupMe Chatbot
-#Version 69
-  
+#Version 71
+
 import os
 import json
+import random
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -17,15 +18,38 @@ app = Flask(__name__)
 def webhook():
 	data = request.get_json()
 
-	# We don't want to reply to ourselves!
 	if data['name'] != 'Marty':
-		msg = '{}, you sent "{}".'.format(data['name'], data['text'])
+		methodController(data)
 		send_message(msg)
 
 	return "ok", 200
 
 
-def send_message(msg):
+def methodController(data):
+	text = data['text']
+ 
+	originalWords = re.sub("[^\w]", " ",  data['text']).split()
+	words = []
+	
+	for word in originalWords:
+		words.append(word.lower())
+	if "hello" or "hi" or "hey" in words:
+		converse(data)
+
+
+def converse(data):
+	responese = [
+		"Hello",
+		"Hey"
+		"Hi there"
+	]
+
+	x = random.randint(0,2)
+	msg = responese[x] 
+	sendMessage(msg)
+
+
+def sendMessage(msg):
 	url  = 'https://api.groupme.com/v3/bots/post'
 
 	data = {
@@ -35,8 +59,3 @@ def send_message(msg):
 		
 	request = Request(url, urlencode(data).encode())
 	json = urlopen(request).read().decode()
- 
-  
-def log(msg):
-  print(str(msg))
-  sys.stdout.flush()
