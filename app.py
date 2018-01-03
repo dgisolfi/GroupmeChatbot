@@ -21,7 +21,6 @@ def webhook():
 
 	if data['name'] != 'Marty':
 		methodController(data)
-		send_message(msg)
 
 	return "ok", 200
 
@@ -31,22 +30,33 @@ def methodController(data):
  
 	originalWords = re.sub("[^\w]", " ",  data['text']).split()
 	words = []
-	
+
 	for word in originalWords:
 		words.append(word.lower())
-	if "hello" or "hi" or "hey" in words:
-		converse(data)
+
+	if "marty" in words:
+		if "echo" in words: 
+			echo(data)
+		else:
+			greeting(data)
 
 
 def converse(data):
-	responese = [
+	pass
+
+def greeting(data):
+	grettings = [
 		"Hello",
 		"Hey",
 		"Hi there"
 	]
 
 	x = random.randint(0,2)
-	msg = responese[x] 
+	msg = grettings[x] + " " +  data['name']
+	sendMessage(msg)
+
+def echo(data):
+	msg = '{}, you sent "{}".'.format(data['name'], data['text'])
 	sendMessage(msg)
 
 
