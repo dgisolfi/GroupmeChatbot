@@ -56,32 +56,19 @@ def methodController(data):
 	if "marty" in words:
 		if "echo" in words: 
 			echo(data)
-		# elif words in greetings:
-		# 	greeting(data, greetings)
 		else:
-			converse(data)
+			greetTest(words,greetings)
+			# converse(data)
 
+			
+def greetTest(words, greetings):
+	for words in greetings
+		greeting(data, greetings)
 
 def converse(data):
 
-	bot.set_trainer(ListTrainer)
-	bot.train(
-		["Hello",
-		"Hey",
-		"How are you doing?",
-		"I'm doing great."])
-
-	bot.train(
-		["what is your name?",
-		"My name is Marty"])
-
-	bot.train(
-		["Who made you?",
-		"Daniel Gisolfi"])
-
-	# bot.train("chatterbot.corpus.english.conversations");
-	# bot.train("chatterbot.corpus.english");
-
+	bot.train("chatterbot.corpus.english");
+	
 	msg = bot.get_response(data['text'])
 	sendMessage(msg)
 
