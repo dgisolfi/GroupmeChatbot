@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/2/18
 #GroupMe Chatbot
-#v97
+#v100
 
 import os
 import json
@@ -62,7 +62,7 @@ def methodController(data):
 
 			
 def greetTest(words, greetings):
-	for words in greetings
+	for words in greetings:
 		greeting(data, greetings)
 
 def converse(data):
