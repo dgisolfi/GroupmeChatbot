@@ -82,7 +82,7 @@ def converse(data):
 	bot.train("chatterbot.corpus.english.conversations");
 	# bot.train("chatterbot.corpus.english");
 	
-	msg = bot.get_response(data['text'])
+	msg = bot.get_response(str(data['text']))
 	sendMessage(msg)
 
 def greeting(data, greetings):
