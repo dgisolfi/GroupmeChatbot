@@ -31,11 +31,12 @@ def methodController(data):
 	originalWords = re.sub("[^\w]", " ",  data['text']).split()
 	words = []
 
-	grettings = [
+	greetings = [
 		"Hello",
 		"Hey",
 		"Hi there",
-		"Hi"
+		"Hi",
+		"Hallo"
 	]
 
 	for word in originalWords:
@@ -45,18 +46,18 @@ def methodController(data):
 		if "echo" in words: 
 			echo(data)
 		elif words in greetings:
-			greeting(data, grettings)
+			greeting(data, greetings)
 
 
 def converse(data):
 	pass
 
-def greeting(data, grettings):
+def greeting(data, greetings):
 	name = re.sub("[^\w]", " ",  data['name']).split()
 	firstName = name[0]
 
 	x = random.randint(0,2)
-	msg = grettings[x] + " " +  firstName
+	msg = greetings[x] + " " +  firstName
 	sendMessage(msg)
 
 def echo(data):
