@@ -44,9 +44,8 @@ def methodController(data):
 	]
 
 	for word in originalWords:
-		word.lower()
-		words.append()
-
+		words.append(word.lower())
+		
 	if "marty" in words:
 		if "echo" in words: 
 			echo(data)
