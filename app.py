@@ -2,6 +2,7 @@
 #Date: 1/2/18
 #GroupMe Chatbot
 #Version 71
+	
 import os
 import json
 import random
@@ -45,7 +46,7 @@ def methodController(data):
 
 	for word in originalWords:
 		words.append(word.lower())
-		
+
 	if "marty" in words:
 		if "echo" in words: 
 			echo(data)
@@ -59,6 +60,8 @@ def converse(data):
 	bot = ChatBot("Marty",silence_performance_warning=True)
 	bot.set_trainer(ChatterBotCorpusTrainer)
 	
+	conversation = 
+	
 	# bot.set_trainer(ListTrainer)
 	# bot.train([
 	# 	"Hello",
@@ -70,7 +73,7 @@ def converse(data):
 	# 	"You're welcome.",
 	# 	"My name is Marty."
 	# ])
-	bot.train('chatterbot.corpus.english')
+	bot.train("chatterbot.corpus.english.greetings");
 	
 	msg = bot.get_response(data['text'])
 	sendMessage(msg)
