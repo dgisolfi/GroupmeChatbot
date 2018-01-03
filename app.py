@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/2/18
 #GroupMe Chatbot
-#v100
+#v97
 
 import os
 import json
@@ -21,9 +21,9 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 app = Flask(__name__)
 
 bot = ChatBot("Marty",
-	silence_performance_warning=True, 
-	trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
-	storage_adapter="chatterbot.storage.SQLStorageAdapter")
+	silence_performance_warning=True)
+	# trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
+	# storage_adapter="chatterbot.storage.SQLStorageAdapter")
 
 @app.route('/', methods=['POST'])
 
@@ -57,17 +57,33 @@ def methodController(data):
 		if "echo" in words: 
 			echo(data)
 		else:
-			greetTest(words,greetings, data)
-			# converse(data)
+			# greetTest(words,greetings)
+			converse(data)
 
 			
-def greetTest(words, greetings, data):
+def greetTest(words, greetings):
 	for words in greetings:
 		greeting(data, greetings)
 
 def converse(data):
+	
+	bot.set_trainer(ListTrainer)
+	bot.train(
+		["Hello",
+		"Hey",
+		"How are you doing?",
+		"I'm doing great."])
 
-	bot.train("chatterbot.corpus.english");
+	bot.train(
+		["what is your name?",
+		"My name is Marty"])
+
+	bot.train(
+		["Who made you?",
+		"Daniel Gisolfi"])
+
+
+	# bot.train("chatterbot.corpus.english");
 	
 	msg = bot.get_response(data['text'])
 	sendMessage(msg)
