@@ -53,20 +53,26 @@ def methodController(data):
 	for word in originalWords:
 		words.append(word.lower())
 
-	if "marty" in words:
+	if "@marty" in words:
 		if "echo" in words: 
 			echo(data)
+		elif "create" in words:
+			if "list" in words:
+				createList(words)
 		else:
-			# greetTest(words,greetings)
 			converse(data)
 
-			
-def greetTest(words, greetings):
-	for words in greetings:
-		greeting(data, greetings)
+def createList(words):
+	if "create list" in words:
+		listName = words.split("list",1)[1]
+		msg = "Okay, I have created a list called " +  listName
+
+	elif "help" in words:
+		msg = "to create a list type 'create List' and then the list name. EX: Create list ToDoList"
+
 
 def converse(data):
-	
+
 	bot.set_trainer(ListTrainer)
 	bot.train(
 		["Hello",
