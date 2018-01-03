@@ -57,11 +57,11 @@ def methodController(data):
 		if "echo" in words: 
 			echo(data)
 		else:
-			greetTest(words,greetings)
+			greetTest(words,greetings, data)
 			# converse(data)
 
 			
-def greetTest(words, greetings):
+def greetTest(words, greetings, data):
 	for words in greetings:
 		greeting(data, greetings)
 
