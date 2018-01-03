@@ -1,13 +1,8 @@
 #Author: Daniel Gisolfi
 #Date: 1/2/18
 #GroupMe Chatbot
-#Version 71
+#v97
 
-#Author: Daniel Gisolfi
-#Date: 8/4/17
-#GroupMe Chatbot
-#Version 69
-	
 import os
 import json
 import random
@@ -74,9 +69,16 @@ def converse(data):
 		["Hello",
 		"Hey",
 		"How are you doing?",
-		"I'm doing great."],
-		["what is your name?"
+		"I'm doing great."])
+
+	bot.train(
+		["what is your name?",
 		"My name is Marty"])
+
+	bot.train(
+		["Who made you?",
+		"Daniel Gisolfi"])
+
 	# bot.train("chatterbot.corpus.english.conversations");
 	# bot.train("chatterbot.corpus.english");
 	
