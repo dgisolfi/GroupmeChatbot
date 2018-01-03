@@ -2,16 +2,20 @@
 #Date: 1/2/18
 #GroupMe Chatbot
 #Version 71
-
 import os
 import json
 import random
 import re
+import sys
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
-
 from flask import Flask, request
+
+from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
+from chatterbot.trainers import ChatterBotCorpusTrainer
+
 
 app = Flask(__name__)
 
@@ -40,17 +44,37 @@ def methodController(data):
 	]
 
 	for word in originalWords:
-		words.append(word.lower())
+		word.lower()
+		words.append()
 
 	if "marty" in words:
 		if "echo" in words: 
 			echo(data)
 		elif words in greetings:
 			greeting(data, greetings)
+		else:
+			converse(data)
 
 
 def converse(data):
-	pass
+	bot = ChatBot("Marty",silence_performance_warning=True)
+	bot.set_trainer(ChatterBotCorpusTrainer)
+	
+	# bot.set_trainer(ListTrainer)
+	# bot.train([
+	# 	"Hello",
+	# 	"Hey",
+	# 	"How are you doing?",
+	# 	"I'm doing great.",
+	# 	"That is good to hear",
+	# 	"Thank you.",
+	# 	"You're welcome.",
+	# 	"My name is Marty."
+	# ])
+	bot.train('chatterbot.corpus.english')
+	
+	msg = bot.get_response(data['text'])
+	sendMessage(msg)
 
 def greeting(data, greetings):
 	name = re.sub("[^\w]", " ",  data['name']).split()
