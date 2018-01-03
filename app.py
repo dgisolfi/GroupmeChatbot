@@ -3,6 +3,11 @@
 #GroupMe Chatbot
 #Version 71
 
+#Author: Daniel Gisolfi
+#Date: 8/4/17
+#GroupMe Chatbot
+#Version 69
+	
 import os
 import json
 import random
@@ -74,8 +79,8 @@ def converse(data):
 	# 	"You're welcome.",
 	# 	"My name is Marty."
 	# ])
-	# bot.train("chatterbot.corpus.english.conversations");
-	bot.train("chatterbot.corpus.english");
+	bot.train("chatterbot.corpus.english.conversations");
+	# bot.train("chatterbot.corpus.english");
 	
 	msg = bot.get_response(data['text'])
 	sendMessage(msg)
