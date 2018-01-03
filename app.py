@@ -69,18 +69,15 @@ def methodController(data):
 
 def converse(data):
 
-	# bot.set_trainer(ListTrainer)
-	# bot.train([
-	# 	"Hello",
-	# 	"Hey",
-	# 	"How are you doing?",
-	# 	"I'm doing great.",
-	# 	"That is good to hear",
-	# 	"Thank you.",
-	# 	"You're welcome.",
-	# 	"My name is Marty."
-	# ])
-	bot.train("chatterbot.corpus.english.conversations");
+	bot.set_trainer(ListTrainer)
+	bot.train(
+		["Hello",
+		"Hey",
+		"How are you doing?",
+		"I'm doing great."],
+		["what is your name?"
+		"My name is Marty"])
+	# bot.train("chatterbot.corpus.english.conversations");
 	# bot.train("chatterbot.corpus.english");
 	
 	userText = request.args.get(data['text'])
