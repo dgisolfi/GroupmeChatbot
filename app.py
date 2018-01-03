@@ -6,6 +6,7 @@
 import os
 import json
 import random
+import re
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -59,3 +60,7 @@ def sendMessage(msg):
 		
 	request = Request(url, urlencode(data).encode())
 	json = urlopen(request).read().decode()
+
+	def log(msg):
+	print(str(msg))
+	sys.stdout.flush()
