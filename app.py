@@ -60,7 +60,7 @@ def sendMessage(msg):
 		
 	request = Request(url, urlencode(data).encode())
 	json = urlopen(request).read().decode()
-
-	def log(msg):
+	
+def log(msg):
 	print(str(msg))
 	sys.stdout.flush()
