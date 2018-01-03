@@ -31,6 +31,7 @@ bot = ChatBot("Marty",
 	storage_adapter="chatterbot.storage.SQLStorageAdapter")
 
 @app.route('/', methods=['POST'])
+
 def webhook():
 	data = request.get_json()
 
@@ -82,7 +83,8 @@ def converse(data):
 	bot.train("chatterbot.corpus.english.conversations");
 	# bot.train("chatterbot.corpus.english");
 	
-	msg = bot.get_response(str(data['text']))
+	userText = request.args.get(data['text'])
+	msg = bot.get_response(userText)
 	sendMessage(msg)
 
 def greeting(data, greetings):
