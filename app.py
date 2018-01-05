@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/3/18
 #GroupMe Chatbot
-#v106
+#v108
 
 import os
 import json
@@ -69,7 +69,13 @@ def methodController(data):
 
 def createList(words):
 	if "list" in words:
-		listName = words.split("list",1)[1]
+		#find the index of the word list wich preceeds with name of the list
+		x = listName.index("list")
+
+		#add 1 to the index of x so that x is equal to the index of the nameo f the list that mus be created
+		x += 1
+
+		listName = words[x]
 		msg = "Okay, I have created a list called " +  listName
 		sendMessage(msg)
 
@@ -102,7 +108,13 @@ def greetReply(data, greetings):
 	name = re.sub("[^\w]", " ",  data['name']).split()
 	firstName = name[0]
 
-	x = random.randint(0,2)
+	#Get the number of elesments in the list
+	maxLen = len(greetings)
+
+	#get a random index from 0 to the largest index in list
+	x = random.randint(0,maxLen)
+
+	#create a message using the random item from the list plus the user's name 
 	msg = greetings[x] + " " +  firstName
 	sendMessage(msg)
 
