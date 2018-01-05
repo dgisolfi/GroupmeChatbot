@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/3/18
 #GroupMe Chatbot
-#v113
+#v114
 
 import os
 import json
@@ -113,7 +113,7 @@ def greetReply(data, greetings):
 
 	#get a random index from 0 to the largest index in list
 	x = random.randint(0,maxLen)
-	sendMessage("X = " + str(x))
+	sendMessage(x)
 
 	#create a message using the random item from the list plus the user's name 
 	msg = greetings[x] + " " +  firstName
