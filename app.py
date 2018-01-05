@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/3/18
 #GroupMe Chatbot
-#v115
+#v116
 
 import os
 import json
@@ -97,11 +97,11 @@ def listFunc(words, function):
 	x += 1
 	listName = words[x]
 
-	if function = "show":
+	if function == "show":
 		msg = " ".join(listName)
 		sendMessage(msg)
 
-	elif function = "add":
+	elif function == "add":
 		x = words.index("add")
 		x += 1
 		item = words[x]
