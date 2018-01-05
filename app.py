@@ -61,6 +61,7 @@ def methodController(data):
 		elif"echo" in words: 
 			echo(data)
 		elif "create" in words:
+			sendMessage("create")
 			if "list" in words:
 				createList(words)
 		else:
@@ -79,8 +80,7 @@ def createList(words):
 def converse(data):
 
 	bot.set_trainer(ListTrainer)
-	bot.train(
-		[
+	bot.train([
 		"How are you doing?",
 		"I'm doing great."])
 
