@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/3/18
 #GroupMe Chatbot
-#v106
+#v113
 
 import os
 import json
@@ -56,7 +56,7 @@ def methodController(data):
 
 	if "marty" in words:
 		if greetings in words:
-			greetReply(data)
+			greetReply(data, greetings)
 		elif"echo" in words: 
 			echo(data)
 		elif "create" in words:
@@ -104,25 +104,16 @@ def converse(data):
 	msg = bot.get_response(data['text'])
 	sendMessage(msg)
 
-def greetReply(data):
+def greetReply(data, greetings):
 	name = re.sub("[^\w]", " ",  data['name']).split()
 	firstName = name[0]
-
-	greetings = [
-	"Hello",
-	"Hey",
-	"Hi there",
-	"Hi",
-	"Hallo"
-	"Cheerio",
-	"Cheers"
-	]
 
 	#Get the number of elesments in the list
 	maxLen = len(greetings)
 
 	#get a random index from 0 to the largest index in list
 	x = random.randint(0,maxLen)
+	sendMessage("X = " + str(x))
 
 	#create a message using the random item from the list plus the user's name 
 	msg = greetings[x] + " " +  firstName
