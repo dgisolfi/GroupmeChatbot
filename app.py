@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/3/18
 #GroupMe Chatbot
-#v108
+#v111
 
 import os
 import json
@@ -61,16 +61,14 @@ def methodController(data):
 		elif"echo" in words: 
 			echo(data)
 		elif "create" in words:
-			sendMessage("create")
-			if "list" in words:
-				createList(words)
+			create(words)
 		else:
 			converse(data)
 
-def createList(words):
+def create(words):
 	if "list" in words:
 		#find the index of the word list wich preceeds with name of the list
-		x = listName.index("list")
+		x = words.index("list")
 
 		#add 1 to the index of x so that x is equal to the index of the nameo f the list that mus be created
 		x += 1
