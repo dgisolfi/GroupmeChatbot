@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/3/18
 #GroupMe Chatbot
-#v106
+#v107
 
 import os
 import json
@@ -75,7 +75,7 @@ def converse(data):
 
 	bot.set_trainer(ListTrainer)
 	bot.train(
-		["Hello " + data['nickname'],
+		["Hello",
 		"Hey",
 		"How are you doing?",
 		"I'm doing great."])
