@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/3/18
 #GroupMe Chatbot
-#v114
+#v115
 
 import os
 import json
@@ -55,12 +55,18 @@ def methodController(data):
 		words.append(word.lower())
 
 	if "marty" in words:
-		if greetings in words:
-			greetReply(data, greetings)
-		elif"echo" in words: 
+		# if greetings in words:
+			# greetReply(data, greetings)
+		if"echo" in words: 
 			echo(data)
 		elif "create" in words:
 			create(words)
+		elif "show" in words:
+			if "list" in words:
+				listFunc(words, "show")
+		elif "add" in words:
+			if "list" in words:
+				listFunc(words, "add")
 		else:
 			converse(data)
 
@@ -73,6 +79,9 @@ def create(words):
 		x += 1
 
 		listName = words[x]
+		writeFile = open(listName, 'w')
+		writeFile.write(listName)
+		writeFile.close()
 		msg = "Okay, I have created a list called " +  listName
 		sendMessage(msg)
 
@@ -80,9 +89,40 @@ def create(words):
 		msg = "to create a list type 'create List' and then the list name. EX: Create list ToDoList"
 		sendMessage(msg)
 
+def listFunc(words, function):
+
+	#find the index of the word list wich preceeds with name of the list
+	x = words.index("list")
+	#add 1 to the index of x so that x is equal to the index of the nameo f the list that mus be created
+	x += 1
+	listName = words[x]
+
+	if function = "show":
+		msg = " ".join(listName)
+		sendMessage(msg)
+
+	elif function = "add":
+		x = words.index("add")
+		x += 1
+		item = words[x]
+		line = fo.writelines(item)
+		msg = "I have added " + item  + " to the list"
+		sendMessage(msg)
+
+
+
 def converse(data):
 
 	bot.set_trainer(ListTrainer)
+	
+	bot.train([
+		"Hello",
+		"Hi"])
+	
+	bot.train([
+		"Hey",
+		"Heyo"])
+
 	bot.train([
 		"How are you doing?",
 		"I'm doing great."])
@@ -98,6 +138,14 @@ def converse(data):
 	bot.train(
 		["Thank you",
 		"Your Welcome"])
+
+	bot.train(
+		["Good Morning",
+		"Good Morning"])
+
+	bot.train(
+		["Good Evening",
+		"Good Evening"])
 
 	# bot.train("chatterbot.corpus.english");
 	
