@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
-#Date: 1/2/18
+#Date: 1/5/18
 #GroupMe Chatbot
-#v97
+#v104
 
 import os
 import json
@@ -37,7 +37,6 @@ def webhook():
 
 
 def methodController(data):
-	text = data['text']
  
 	originalWords = re.sub("[^\w]", " ",  data['text']).split()
 	words = []
@@ -53,7 +52,7 @@ def methodController(data):
 	for word in originalWords:
 		words.append(word.lower())
 
-	if "@marty" in words:
+	if "marty" in words:
 		if "echo" in words: 
 			echo(data)
 		elif "create" in words:
@@ -66,10 +65,11 @@ def createList(words):
 	if "create list" in words:
 		listName = words.split("list",1)[1]
 		msg = "Okay, I have created a list called " +  listName
+		sendMessage(msg)
 
 	elif "help" in words:
 		msg = "to create a list type 'create List' and then the list name. EX: Create list ToDoList"
-
+		sendMessage(msg)
 
 def converse(data):
 
@@ -82,7 +82,8 @@ def converse(data):
 
 	bot.train(
 		["what is your name?",
-		"My name is Marty"])
+		"My name is Marty",
+		"What is your name?"])
 
 	bot.train(
 		["Who made you?",
@@ -108,6 +109,7 @@ def echo(data):
 
 
 def sendMessage(msg):
+
 	url  = 'https://api.groupme.com/v3/bots/post'
 
 	data = {
