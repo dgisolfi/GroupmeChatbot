@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
-#Date: 1/5/18
+#Date: 1/3/18
 #GroupMe Chatbot
-#v104
+#v106
 
 import os
 import json
@@ -62,7 +62,7 @@ def methodController(data):
 			converse(data)
 
 def createList(words):
-	if "create list" in words:
+	if "list" in words:
 		listName = words.split("list",1)[1]
 		msg = "Okay, I have created a list called " +  listName
 		sendMessage(msg)
@@ -75,7 +75,7 @@ def converse(data):
 
 	bot.set_trainer(ListTrainer)
 	bot.train(
-		["Hello",
+		["Hello " + data['nickname'],
 		"Hey",
 		"How are you doing?",
 		"I'm doing great."])
@@ -94,6 +94,7 @@ def converse(data):
 	bot.train(
 		["Who made you?",
 		"Daniel Gisolfi"])
+
 
 	# bot.train("chatterbot.corpus.english");
 	
