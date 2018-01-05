@@ -81,14 +81,19 @@ def converse(data):
 		"I'm doing great."])
 
 	bot.train(
-		["what is your name?",
-		"My name is Marty",
-		"What is your name?"])
+		["Hello",
+		"Hey",
+		"Hi",
+		"Cheerio",
+		"Cheers"])
+
+	bot.train(
+		["What is your name?",
+		"My name is Marty"])
 
 	bot.train(
 		["Who made you?",
 		"Daniel Gisolfi"])
-
 
 	# bot.train("chatterbot.corpus.english");
 	
