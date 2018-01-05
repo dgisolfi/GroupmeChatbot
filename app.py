@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
 #Date: 1/3/18
 #GroupMe Chatbot
-#v107
+#v106
 
 import os
 import json
@@ -47,13 +47,18 @@ def methodController(data):
 		"Hi there",
 		"Hi",
 		"Hallo"
+		"Cheerio",
+		"Cheers"
 	]
 
 	for word in originalWords:
 		words.append(word.lower())
 
 	if "marty" in words:
-		if "echo" in words: 
+		if greetings in words:
+			greetReply(data, greetings)
+
+		elif"echo" in words: 
 			echo(data)
 		elif "create" in words:
 			if "list" in words:
@@ -75,17 +80,9 @@ def converse(data):
 
 	bot.set_trainer(ListTrainer)
 	bot.train(
-		["Hello",
-		"Hey",
+		[
 		"How are you doing?",
 		"I'm doing great."])
-
-	bot.train(
-		["Hello",
-		"Hey",
-		"Hi",
-		"Cheerio",
-		"Cheers"])
 
 	bot.train(
 		["What is your name?",
@@ -101,7 +98,7 @@ def converse(data):
 	msg = bot.get_response(data['text'])
 	sendMessage(msg)
 
-def greeting(data, greetings):
+def greetReply(data, greetings):
 	name = re.sub("[^\w]", " ",  data['name']).split()
 	firstName = name[0]
 
