@@ -1,7 +1,7 @@
 #Author: Daniel Gisolfi
-#Date: 1/3/18
+#Date: 1/8/18
 #GroupMe Chatbot
-#v116
+#v117
 
 import os
 import json
@@ -59,14 +59,14 @@ def methodController(data):
 			# greetReply(data, greetings)
 		if"echo" in words: 
 			echo(data)
-		elif "create" in words:
-			create(words)
-		elif "show" in words:
-			if "list" in words:
-				listFunc(words, "show")
-		elif "add" in words:
-			if "list" in words:
-				listFunc(words, "add")
+		# elif "create" in words:
+		# 	create(words)
+		# elif "show" in words:
+		# 	if "list" in words:
+		# 		listFunc(words, "show")
+		# elif "add" in words:
+		# 	if "list" in words:
+		# 		listFunc(words, "add")
 		else:
 			converse(data)
 
@@ -107,8 +107,8 @@ def listFunc(words, function):
 		item = words[x]
 		line = fo.writelines(item)
 		msg = "I have added " + item  + " to the list"
-		sendMessage(msg)
-
+		sendMessage(msg
+)
 
 
 def converse(data):
@@ -187,3 +187,5 @@ def sendMessage(msg):
 def log(msg):
 	print(str(msg))
 	sys.stdout.flush()
+
+
