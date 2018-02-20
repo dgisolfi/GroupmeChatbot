@@ -33,7 +33,7 @@ def webhook():
 # 	data = request.get_json()
 
 # 	if data['name'] != 'Marty':
-	methodController(data)
+	methodController()
 
 	return "ok", 200
 
