@@ -13,19 +13,19 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from flask import Flask, request
 
-from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
-from chatterbot.trainers import ChatterBotCorpusTrainer
+# from chatterbot import ChatBot
+# from chatterbot.trainers import ListTrainer
+# from chatterbot.trainers import ChatterBotCorpusTrainer
 
 import time, random, datetime
 
 
 app = Flask(__name__)
 
-bot = ChatBot("Marty",
-	silence_performance_warning=True)
-	# trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
-	# storage_adapter="chatterbot.storage.SQLStorageAdapter")
+# bot = ChatBot("Marty",
+# 	silence_performance_warning=True)
+# 	# trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
+# 	# storage_adapter="chatterbot.storage.SQLStorageAdapter")
 
 @app.route('/', methods=['POST'])
 
