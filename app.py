@@ -30,10 +30,10 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 
 def webhook():
-	data = request.get_json()
+# 	data = request.get_json()
 
-	if data['name'] != 'Marty':
-		methodController(data)
+# 	if data['name'] != 'Marty':
+	methodController(data)
 
 	return "ok", 200
 
@@ -43,8 +43,7 @@ def methodController():
 		#uses the dayCheck function to get the right message else a random one.
 		my_msg = "Neep Peep"
 
-		#send a sms from twilio number to cell with my_msg as text
-		message = client.api.account.messages.create(to=my_cell, from_=my_twilio, body=my_msg)
+		sendMessage(my_msg)
 		#print a conformation that the task has completed
 		print("Neep Peep Sent to group chat")
 
@@ -61,11 +60,6 @@ def methodController():
 		# print("End")
 		print("End : %s" % time.ctime())
 
-
-
-def echo(data):
-	msg = '{}, you sent "{}".'.format(data['name'], data['text'])
-	sendMessage(msg)
 
 
 def sendMessage(msg):
