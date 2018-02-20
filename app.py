@@ -50,16 +50,9 @@ def methodController():
 
 		#create a random interval of time between 1 - 8 hours
 		# waitTime = randint(10800,43200)
-		waitTime = (60)
-		print(waitTime/60/60)
-		i = 0
-		while i < waitTime:
-		    progress(i, waitTime, status='waiting to send next message')
-		    time.sleep(0.5)  # emulating long-playing job
-		    i += 1
-		#print aprox how many hours the function will sleep
-
-
+		waitTime = 60
+		#print(waitTime/60/60)
+		print(waitTime)
 
 		#set the fucntion to sleep for x amount of time then run again, and loop
 		print("Start : %s" % time.ctime())
