@@ -33,16 +33,18 @@ def webhook():
 # 	data = request.get_json()
 
 # 	if data['name'] != 'Marty':
+	print("starting webhook")
 	methodController()
 
 	return "ok", 200
 
 def methodController():
 	#create  loop
+	print("starting loop")
 	while True:
 		#uses the dayCheck function to get the right message else a random one.
 		my_msg = "Neep Peep"
-
+		print("Sending Message")
 		sendMessage(my_msg)
 		#print a conformation that the task has completed
 		print("Neep Peep Sent to group chat")
