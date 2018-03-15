@@ -22,7 +22,8 @@ app = Flask(__name__)
 
 def webhook():
 	data = request.get_json()
-
+	print("webhook sarted")
+	methodController()
 	return "ok", 200
 
 def methodController():
@@ -31,11 +32,12 @@ def methodController():
 		#uses the dayCheck function to get the right message else a random one.
 		msg = "Neep Peep"
 		sendMessage(msg)
+		print("sent message")
 		#create a random interval of time between 1 - 8 hours
 		# waitTime = randint(10800,43200)
 		waitTime = (5)
 		print(waitTime/60/60)
-		i = 0
+		i = 0s
 		while i < waitTime:
 		    progress(i, waitTime, status='waiting to send next message')
 		    time.sleep(0.5)  # emulating long-playing job
