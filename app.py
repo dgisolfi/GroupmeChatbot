@@ -15,18 +15,18 @@ from flask import Flask, request
 import time, random, datetime
 
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
 
-@app.route('/', methods=['POST'])
+# @app.route('/', methods=['POST'])
 
-def webhook():
-	data = request.get_json()
-	print("webhook sarted")
-	methodController()
-	return "ok", 200
+# def webhook():
+# 	data = request.get_json()
+# 	print("webhook sarted")
+# 	methodController()
+# 	return "ok", 200
 
-def methodController():
+def neepPeep():
 	#create  loop
 	while True:
 		#uses the dayCheck function to get the right message else a random one.
@@ -37,7 +37,7 @@ def methodController():
 		# waitTime = randint(10800,43200)
 		waitTime = (5)
 		print(waitTime/60/60)
-		i = 0s
+		i = 0
 		while i < waitTime:
 		    progress(i, waitTime, status='waiting to send next message')
 		    time.sleep(0.5)  # emulating long-playing job
@@ -67,3 +67,6 @@ def sendMessage(msg):
 def log(msg):
 	print(str(msg))
 	sys.stdout.flush()
+	
+	
+neepPeep()
