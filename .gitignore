@@ -1,0 +1,7 @@
+.vscode
+.vs
+data
+db.sqlite3
+backup.py
+.DS_Store
+makefile
