@@ -15,12 +15,12 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 read_messages = []
 filename = 'read_messages.txt'
 
-api_host = None
+api_host = 'http://138.68.140.175:5525'
 
 bot_name = 'Marty'
-bot_id = None
-group_id = None
-api_token = None
+bot_id = 'a6f23695345ae6009c7d8ccd4e'
+group_id = 28081262
+api_token = 'sSZSlKxXJyRd8SqFw5f8vikRNEiMZFWHgWWmCu7N'
 
 #Create a instnce of a chatterbot and tell the bot where to find data
 bot = ChatBot('Marty')
@@ -45,9 +45,13 @@ def getMessages():
     #make a request to the api for the most recent messages
     request = requests.get(api_host + '/requestMessages')
     lines = readMsgIDs()
-
-    if (request.status_code == 200):
+  
+    if request.status_code == 200:
+        # try:
         messages = request.json()['data']['response']['messages']
+        # except:
+        #     print('no messages')
+        #     return None
         for message in messages:
             #Check Marty sent the message
             if message['name'] == 'Marty':
@@ -79,6 +83,8 @@ def readMsgIDs():
     try:
         file = open(filename, 'r')
         lines = file.readlines()
+        for line in lines:
+            line.replace("\n", "")
         print(lines)
         file.close()        
         return lines
@@ -96,7 +102,7 @@ def writeMsgIDs(arg):
     else:
         count = 0
         for id in read_messages:
-            file.write(str(read_messages[count]))
+            file.write(str(read_messages[count] + '\n'))
             count += 1
 
     file.close()
@@ -109,8 +115,8 @@ def main():
         try:
             user_msgs = []
             user_msgs.append(getMessages())
-            print(len(user_msgs))
             if len(user_msgs):
+                print(len(user_msgs))
                 for msg in user_msgs:
                     # sendMessage(martyResponse(msg))
                     continue
