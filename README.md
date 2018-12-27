@@ -1,2 +1,2 @@
 # marty-groupme-chatbot
-a flask application running on Heroku to serve as a in chat bot for Groupme
+a python bot running on my vm to serve as a chatbot for Groupme
