@@ -5,7 +5,6 @@
 import os
 import time
 import json
-import pickle
 import requests
 from datetime import datetime
 from chatterbot import ChatBot
@@ -32,14 +31,18 @@ bot.train(
 
 def registerBot():
     #make a request to the api to register the bot
-    requests.post(api_host +'/registerBot', 
-    data=json.dumps({
-        'bot_name': bot_name, 
-        'bot_id': bot_id, 
-        'group_id': group_id, 
-        'api_token': api_token
-        })
-    )
+    try:
+        requests.post(api_host +'/registerBot', 
+        data=json.dumps({
+            'bot_name': bot_name, 
+            'bot_id': bot_id, 
+            'group_id': group_id, 
+            'api_token': api_token
+            })
+        )
+    except:
+        print('Failed to Register Bot with API.',
+        'Are you sure the API address is correct?')
 
 def getMessages():
     #make a request to the api for the most recent messages
