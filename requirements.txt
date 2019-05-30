@@ -3,6 +3,6 @@
 
 chatterbot>=0.8.7
 chatterbot-corpus>=1.1.2
-Flask==0.12.2
-requests==2.19.1
-markdown==2.6.11
+flask>=0.12.3
+requests>=2.20.0
+markdown>=2.6.11

@@ -6,6 +6,10 @@ RUN apt-get update -y \
     python3-dev \
     build-essential
 
+ENV BOT_NAME=<PLACEHOLDER>
+ENV BOT_ID=<PLACEHOLDER>
+ENV GROUP_ID=<PLACEHOLDER>
+ENV API_TOKEN=<PLACEHOLDER>
 
 EXPOSE 5525
 
@@ -15,6 +19,5 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-# CMD ["python3", "-m", "src"]
-CMD ["python3","./src/run.py"]
+CMD ["python3", "-m", "src"]
 

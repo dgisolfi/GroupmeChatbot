@@ -128,7 +128,6 @@ dmypy.json
 .vs
 
 .DS_Store
-makefile
 
 db.sqlite3
 run.py
@@ -136,3 +135,5 @@ run.py
 docker-compose.yaml
 
 *.pickle
+/GroupmeChatbot/data
+/GroupmeChatbot/README.md

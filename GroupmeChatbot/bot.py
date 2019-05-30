@@ -16,15 +16,12 @@ class Bot:
         self.api_session = requests.session()
 
         # Create a instnce of a chatterbot and tell the bot where to find data
-        # self.chatbot = ChatBot(self.name)
-        # trainer = ChatterBotCorpusTrainer(self.chatbot)
-        # trainer.train('chatterbot.corpus.english')
-        # self.chat_bot.set_trainer(ChatterBotCorpusTrainer)
-        # self.chat_bot.train(
-        #     'chatterbot.corpus.english',
-        #     # f'data.{self.name}'
-        # )
-    
+        self.chatbot = ChatBot(self.name)
+        trainer = ChatterBotCorpusTrainer(self.chatbot)
+        trainer.train(
+            'chatterbot.corpus.english'
+        )
+
     def sendMessage(self, msg):
         '''Send a message from the bot to its assigned group.
             Args:
@@ -62,16 +59,24 @@ class Bot:
         )
         return response
 
-
     def checkForMention(self, msg):
         '''Checks the recent messages of the bots group for instances of its name
             Args:
-                msg (str): message to be sent to group
+                msg (str): message sent in group chat
             Returns:
                 boolean: a value denoting if the bot was mentioned or not
         '''
         return re.match(r'.*@'+self.name+r'.*', msg)
 
+    def removeMention(self, msg):
+        '''Checks the recent messages of the bots group for instances of its name
+            Args:
+                msg (str): message sent in group chat
+            Returns:
+                msg (str): a messaged with the '@<bot_name>' removed
+        '''
+        return re.sub(f'@{self.name}', '', msg)
+        
     def getResponse(self, msg):
         '''Given a message the appropriate response is returned.
             Args:
